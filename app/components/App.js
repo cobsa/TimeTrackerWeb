@@ -1,5 +1,5 @@
-import React from 'react';
-import img from '../assets/images/react_logo_512x512.png';
+import React from 'react'
+import img from '../assets/images/react_logo_512x512.png'
 
 const App = () => {
   return (
@@ -14,7 +14,7 @@ const App = () => {
         alt="React Logo"
       />
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App
