@@ -1,7 +1,7 @@
 {
-  "name": "react-webpack-boilerplate",
-  "version": "2.1.0",
-  "description": "Minimalistic ES6 React boilerplate",
+  "name": "timetracker-web",
+  "version": "0.0.1",
+  "description": "Time management software",
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server",
@@ -11,11 +11,9 @@
     "lint": "eslint ./app/**/**.js",
     "test": "jest",
     "test:watch": "jest --watch",
-    "coverage": "jest --coverage",
-    "precommit": "cross-env npm run lint && npm test",
-    "prepush": "cross-env npm run lint && npm test"
+    "coverage": "jest --coverage"
   },
-  "author": "Kliment Petrov <kleopetroff@gmail.com>",
+  "author": "Jaakko Koponen <cobsa89@gmail.com",
   "license": "MIT",
   "jest": {
     "setupFiles": ["<rootDir>/config/jest/shim.js"],
