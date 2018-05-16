@@ -1,5 +1,72 @@
+@import 'reset';
+
 $color: #262828;
+$linkColor: #262828;
 
 body {
   color: $color;
+  font-family: 'Roboto', sans-serif;
+}
+
+a {
+  color: $linkColor;
+  text-decoration: none;
+}
+
+h2 {
+  font-size: 175%;
+  margin: 1em 0;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+h3 {
+  font-size: 125%;
+  margin: 1em 0;
+}
+
+p {
+  margin-bottom: 0.5em;
+}
+
+.indented-content {
+  margin: 0 0 0 5em;
+  font-size: 110%;
+  text-align: justify;
+  line-height: 1.4;
+}
+
+header {
+  background-color: #e3f3f3;
+  margin: 0;
+  padding-right: 2em;
+  display: flex;
+  justify-content: space-between;
+  .logo {
+    font-size: 120%;
+    margin: auto 0;
+    padding: 0 1em;
+  }
+  nav {
+    ul {
+      align-self: flex-end;
+      display: flex;
+      justify-content: flex-end;
+      flex-direction: row;
+      list-style: none;
+      li {
+        a {
+          padding: 1em;
+          line-height: 3;
+        }
+        a:hover {
+          background-color: rgb(252, 174, 174);
+        }
+      }
+    }
+  }
+}
+
+.main-container {
+  margin: 2em;
 }

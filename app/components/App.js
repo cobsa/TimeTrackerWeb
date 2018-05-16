@@ -1,19 +1,68 @@
 import React from 'react'
-import img from '../assets/images/react_logo_512x512.png'
+import ApolloClient from 'apollo-client'
+import { ApolloProvider } from 'react-apollo'
+import { createHttpLink } from 'apollo-link-http'
+import { setContext } from 'apollo-link-context'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+import { Provider } from 'react-redux'
+
+import uri from '../graphql/serverUrl'
+import HeaderContainer from './containers/headerContainer'
+// Views
+import Home from './views/home'
+import History from './views/history'
+import Login from './views/login'
+import Profile from './views/profile'
+import SignOut from './views/signout'
+
+import store from '../redux/store'
+
+// Apollo setup
+
+const httpLink = createHttpLink({
+  uri
+})
+
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem('token')
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : ''
+    }
+  }
+})
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache()
+})
 
 const App = () => {
   return (
-    <div>
-      <h2 id="heading">Hello ReactJS</h2>
-      <img
-        className="image"
-        style={{ margin: '0.5em' }}
-        height="40"
-        width="40"
-        src={img}
-        alt="React Logo"
-      />
-    </div>
+    <ApolloProvider client={client}>
+      <Provider store={store}>
+        <div>
+          <Router>
+            <div>
+              <HeaderContainer />
+              <div className="main-container">
+                <Switch>
+                  <Route exact path="/" component={Home} />
+                  <Route path="/history" component={History} />
+                  <Route path="/profile" component={Profile} />
+                  <Route path="/login" component={Login} />
+                  <Route path="/signout" component={SignOut} />
+                </Switch>
+              </div>
+            </div>
+          </Router>
+        </div>
+      </Provider>
+    </ApolloProvider>
   )
 }
 
