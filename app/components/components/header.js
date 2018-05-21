@@ -11,7 +11,7 @@ export default class Header extends Component {
         <nav>
           <ul>
             <li>
-              <NavLink to="/">Home</NavLink>
+              <NavLink exact to="/">Home</NavLink>
             </li>
             <li>
               <NavLink to="/history">History</NavLink>

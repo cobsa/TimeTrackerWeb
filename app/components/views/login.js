@@ -58,7 +58,8 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-  logged: PropTypes.bool.isRequired
+  logged: PropTypes.bool.isRequired,
+  dispatch: PropTypes.func.isRequired
 }
 
 export default connect(state => ({ logged: state.user.logged }))(Login)

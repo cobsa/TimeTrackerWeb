@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { ApolloConsumer } from 'react-apollo'
 import { Redirect } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import * as userActions from '../../redux/user/index'
 
@@ -33,6 +34,11 @@ class SignOut extends Component {
       </div>
     )
   }
+}
+
+SignOut.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  logged: PropTypes.bool.isRequired
 }
 
 export default connect(state => ({ logged: state.user.logged }))(SignOut)

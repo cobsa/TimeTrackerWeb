@@ -14,4 +14,7 @@ HeaderContainer.propTypes = {
   logged: PropTypes.bool.isRequired
 }
 
-export default connect(state => ({ logged: state.user.logged }))(HeaderContainer)
+export default connect(state => ({
+  logged: state.user.logged,
+  location: state.router.location
+}))(HeaderContainer)

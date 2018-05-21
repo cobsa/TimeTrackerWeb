@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
 
+import Today from '../components/history/today'
+
 const query = gql`
   {
     records {
@@ -20,15 +22,12 @@ export default class History extends Component {
         {({ loading, error, data }) => {
           if (loading) return 'Loading'
           if (error) return 'ERRRR'
+          if (!data.records) return 'No data yet'
           return (
-            <div>
-              {data.records.map(record => (
-                <div>
-                  <div>{record.start}</div>
-                  <div>{record.done}</div>
-                  <div>{record.type}</div>
-                </div>
-              ))}
+            <div className="history">
+              <Today records={data.records} />
+              <Today records={data.records} />
+              <Today records={data.records} />
             </div>
           )
         }}

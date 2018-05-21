@@ -3,9 +3,10 @@ import ApolloClient from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
 import { createHttpLink } from 'apollo-link-http'
 import { setContext } from 'apollo-link-context'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { Provider } from 'react-redux'
+import { ConnectedRouter } from 'react-router-redux'
 
 import uri from '../graphql/serverUrl'
 import HeaderContainer from './containers/headerContainer'
@@ -16,7 +17,7 @@ import Login from './views/login'
 import Profile from './views/profile'
 import SignOut from './views/signout'
 
-import store from '../redux/store'
+import { store, history } from '../redux/store'
 
 // Apollo setup
 
@@ -46,7 +47,7 @@ const App = () => {
     <ApolloProvider client={client}>
       <Provider store={store}>
         <div>
-          <Router>
+          <ConnectedRouter history={history}>
             <div>
               <HeaderContainer />
               <div className="main-container">
@@ -59,7 +60,7 @@ const App = () => {
                 </Switch>
               </div>
             </div>
-          </Router>
+          </ConnectedRouter>
         </div>
       </Provider>
     </ApolloProvider>

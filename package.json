@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server",
     "clean": "rimraf dist",
-    "production":
-      "cross-env npm run clean && webpack --config webpack.production.config.js --progress --profile --colors",
+    "production": "cross-env npm run clean && webpack --config webpack.production.config.js --progress --profile --colors",
     "lint": "eslint ./app/**/**.js",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -16,36 +15,47 @@
   "author": "Jaakko Koponen <cobsa89@gmail.com",
   "license": "MIT",
   "jest": {
-    "setupFiles": ["<rootDir>/config/jest/shim.js"],
-    "collectCoverageFrom": ["app/**/*.{js,jsx,ts,tsx}"],
+    "setupFiles": [
+      "<rootDir>/config/jest/shim.js"
+    ],
+    "collectCoverageFrom": [
+      "app/**/*.{js,jsx,ts,tsx}"
+    ],
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-        "<rootDir>/config/jest/assetsTransformer.js",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/jest/assetsTransformer.js",
       "\\.(css|less)$": "<rootDir>/config/jest/assetsTransformer.js"
     },
-    "testMatch": ["**/?(*.)(spec|test).js?(x)"],
+    "testMatch": [
+      "**/?(*.)(spec|test).js?(x)"
+    ],
     "transform": {
       "\\.js$": "babel-jest"
     }
   },
   "dependencies": {
+    "@nivo/pie": "^0.36.0",
     "apollo-boost": "^0.1.6",
     "apollo-cache-inmemory": "^1.2.1",
     "apollo-client": "^2.3.1",
     "apollo-link": "^1.2.2",
     "apollo-link-context": "^1.0.8",
     "apollo-link-http": "^1.5.4",
+    "chart.js": "^2.7.2",
     "cross-env": "5.1.4",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
+    "history": "^4.7.2",
     "lodash": "^4.17.10",
+    "moment": "^2.22.1",
     "prop-types": "^15.6.1",
     "react": "16.3.2",
     "react-apollo": "^2.1.4",
+    "react-chartjs-2": "^2.7.2",
     "react-dom": "16.3.2",
     "react-hot-loader": "4.1.1",
     "react-redux": "^5.0.7",
     "react-router-dom": "4.2.2",
+    "react-router-redux": "^5.0.0-alpha.9",
     "redux": "^4.0.0",
     "redux-logger": "^3.0.6"
   },

@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { Query, Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
 
+import ActiveRecordDetails from '../components/activeRecordDetails'
+import NoActiveRecord from '../components/noActiveRecord'
+
 const ACTIVE_RECORD = gql`
   {
     user {
@@ -31,14 +34,14 @@ export default class ActiveRecord extends Component {
           if (loading) return 'Loading'
           if (error) return 'ERRR'
           const { activeRecord } = data.user
-          if (!activeRecord) return 'No active record'
+          if (!activeRecord) return <NoActiveRecord />
           return (
-            <div>
-              <div>{activeRecord.start}</div>
-              <div>{activeRecord.type}</div>
+            <div className="active-record">
+              <ActiveRecordDetails {...activeRecord} />
               <Mutation mutation={END_RECORD}>
                 {endRecord => (
                   <button
+                    className="end-activity-button"
                     onClick={() => {
                       endRecord({
                         variables: {

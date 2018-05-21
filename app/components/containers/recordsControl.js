@@ -15,16 +15,22 @@ const START_RECORD = gql`
 
 export default class RecordsControl extends Component {
   render() {
+    const typeList = ['Work', 'Workout', 'Free time', 'Sleep']
     return (
       <Mutation mutation={START_RECORD}>
         {startRecord => (
-          <div>
-            <ActivityButton
-              type="work"
-              onClick={type => {
-                startRecord({ variables: { type, start: new Date().toISOString() } })
-              }}
-            />
+          <div className="activity-button-grid">
+            {typeList.map(typeName => {
+              return (
+                <ActivityButton
+                  type={typeName}
+                  key={typeName}
+                  onClick={type => {
+                    startRecord({ variables: { type, start: new Date().toISOString() } })
+                  }}
+                />
+              )
+            })}
           </div>
         )}
       </Mutation>
