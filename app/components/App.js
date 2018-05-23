@@ -16,6 +16,7 @@ import History from './views/history'
 import Login from './views/login'
 import Profile from './views/profile'
 import SignOut from './views/signout'
+import Signup from './views/signup'
 
 import { store, history } from '../redux/store'
 
@@ -56,6 +57,7 @@ const App = () => {
                   <Route path="/history" component={History} />
                   <Route path="/profile" component={Profile} />
                   <Route path="/login" component={Login} />
+                  <Route path="/signup" component={Signup} />
                   <Route path="/signout" component={SignOut} />
                 </Switch>
               </div>

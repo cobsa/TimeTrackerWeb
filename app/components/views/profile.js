@@ -3,6 +3,7 @@ import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 
 import UserDetails from '../components/userDetails'
+import ErrorGraphQL from '../components/errorGraphQL'
 
 const GET_USER = gql`
   {
@@ -19,7 +20,7 @@ export default class Profile extends Component {
       <Query query={GET_USER}>
         {({ loading, error, data }) => {
           if (loading) return null
-          if (error) return <div>Errrr</div>
+          if (error) return <ErrorGraphQL message={error.message} />
           const { user } = data
           return <UserDetails {...user} />
         }}

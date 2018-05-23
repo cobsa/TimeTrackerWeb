@@ -11,14 +11,25 @@ export default class Header extends Component {
         <nav>
           <ul>
             <li>
-              <NavLink exact to="/">Home</NavLink>
+              <NavLink exact to="/">
+                Home
+              </NavLink>
             </li>
-            <li>
-              <NavLink to="/history">History</NavLink>
-            </li>
-            <li>
-              <NavLink to="/profile">Profile</NavLink>
-            </li>
+            {logged ? (
+              <li>
+                <NavLink to="/history">History</NavLink>
+              </li>
+            ) : null}
+            {logged ? (
+              <li>
+                <NavLink to="/profile">Profile</NavLink>
+              </li>
+            ) : null}
+            {logged ? null : (
+              <li>
+                <NavLink to="/signup">Sign up</NavLink>
+              </li>
+            )}
             <li>
               {logged ? (
                 <NavLink to="/signout">Sign Out</NavLink>

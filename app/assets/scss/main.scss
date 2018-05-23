@@ -64,20 +64,19 @@ header {
       list-style: none;
       li {
         a {
-          padding: 1em;
-          line-height: 3;
+          padding: 0.75em;
+          line-height: 2;
         }
         a.active {
           background-color: $successColor;
         }
-      }
-      li:hover {
-        background-color: $infoColor;
+        a:hover {
+          background-color: $infoColor;
+        }
       }
     }
   }
 }
-
 
 %button {
   padding: 1em;
@@ -109,7 +108,6 @@ header {
   color: $white;
 }
 
-
 // Active Record
 
 .active-record {
@@ -140,18 +138,37 @@ header {
   padding: 2em;
   background-color: $warningColor;
   color: $black;
- text-align: center;
+  text-align: center;
 }
 
-// History 
+// History
 
 .history {
   @extend %content-container;
   height: 90vh;
   display: flex;
   flex-direction: column;
-  align-content: center;
-  .today {
+  .day {
     margin: auto;
   }
+}
+
+// Profile
+
+.profile {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+}
+
+// login
+
+.login {
+  display: flex;
+  padding: 1em;
+  flex-direction: column;
+}
+
+.center {
+  margin: auto;
 }

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Mutation } from 'react-apollo'
+import { Mutation, Query } from 'react-apollo'
 import gql from 'graphql-tag'
 
+import GET_TYPES from '../../graphql/getTypes'
 import ActivityButton from '../components/activityButton'
 
 const START_RECORD = gql`
@@ -15,25 +16,33 @@ const START_RECORD = gql`
 
 export default class RecordsControl extends Component {
   render() {
-    const typeList = ['Work', 'Workout', 'Free time', 'Sleep']
     return (
-      <Mutation mutation={START_RECORD}>
-        {startRecord => (
-          <div className="activity-button-grid">
-            {typeList.map(typeName => {
-              return (
-                <ActivityButton
-                  type={typeName}
-                  key={typeName}
-                  onClick={type => {
-                    startRecord({ variables: { type, start: new Date().toISOString() } })
-                  }}
-                />
-              )
-            })}
-          </div>
-        )}
-      </Mutation>
+      <Query query={GET_TYPES}>
+        {({ loading, error, data }) => {
+          if (loading) return 'Loading'
+          if (error) return 'Error'
+          const typeList = data.__type.enumValues
+          return (
+            <Mutation mutation={START_RECORD}>
+              {startRecord => (
+                <div className="activity-button-grid">
+                  {typeList.map(enumType => {
+                    return (
+                      <ActivityButton
+                        type={enumType.name}
+                        key={enumType.name}
+                        onClick={type => {
+                          startRecord({ variables: { type, start: new Date().toISOString() } })
+                        }}
+                      />
+                    )
+                  })}
+                </div>
+              )}
+            </Mutation>
+          )
+        }}
+      </Query>
     )
   }
 }
