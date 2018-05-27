@@ -45,6 +45,7 @@ export default class LoginForm extends Component {
           onChange={this.handleEmail}
         />
         <br />
+        <br />
         <input
           type="password"
           placeholder="Password"

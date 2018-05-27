@@ -8,6 +8,7 @@ import gql from 'graphql-tag'
 
 import * as userActions from '../../redux/user/index'
 import SignupForm from '../components/signupForm'
+import ErrorGraphQL from '../components/errorGraphQL'
 
 const LOGIN_USER = gql`
   mutation loginUser($email: String!, $password: String!) {
@@ -31,6 +32,9 @@ class Signup extends Component {
     // Bind action creators
     const { dispatch } = props
     this.boundActionCreators = bindActionCreators(userActions, dispatch)
+    this.state = {
+      error: null
+    }
   }
 
   handleSignup(name, email, password, passwordAgain) {
@@ -51,7 +55,19 @@ class Signup extends Component {
               password
             }
           })
-          .then(data => this.handleLogin(data.data))
+          .then(loginResponse => {
+            this.handleLogin(loginResponse.data)
+          })
+          .catch(e => {
+            this.setState({
+              error: e.message
+            })
+          })
+      })
+      .catch(e => {
+        this.setState({
+          error: e.message
+        })
       })
   }
 
@@ -78,6 +94,7 @@ class Signup extends Component {
               this.handleSignup(name, email, password, passwordAgain)
             }}
           />
+          {this.state.error && <ErrorGraphQL message={this.state.error} />}
         </div>
       </div>
     )

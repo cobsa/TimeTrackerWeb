@@ -36,13 +36,12 @@ export default class ActiveRecord extends Component {
           const { activeRecord } = data.user
           if (!activeRecord) return <NoActiveRecord />
           return (
-            <div className="active-record">
-              <ActiveRecordDetails {...activeRecord} />
+            <section>
               <Mutation mutation={END_RECORD}>
                 {endRecord => (
-                  <button
-                    className="end-activity-button"
-                    onClick={() => {
+                  <ActiveRecordDetails
+                    {...activeRecord}
+                    onEnd={() => {
                       endRecord({
                         variables: {
                           id: activeRecord._id,
@@ -50,12 +49,10 @@ export default class ActiveRecord extends Component {
                         }
                       })
                     }}
-                  >
-                    End
-                  </button>
+                  />
                 )}
               </Mutation>
-            </div>
+            </section>
           )
         }}
       </Query>

@@ -51,18 +51,12 @@ export default class SignupForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    if (
-      this.state.password === this.state.passwordAgain &&
-      this.state.password !== '' &&
-      this.state.email !== ''
-    ) {
-      this.props.handleSubmit(
-        this.state.name,
-        this.state.email,
-        this.state.password,
-        this.state.passwordAgain
-      )
-    }
+    this.props.handleSubmit(
+      this.state.name,
+      this.state.email,
+      this.state.password,
+      this.state.passwordAgain
+    )
   }
 
   render() {
@@ -96,7 +90,7 @@ export default class SignupForm extends Component {
         />
         <br />
         <br />
-        <button onClick={this.handleSubmit}>Login</button>
+        <button onClick={this.handleSubmit}>Sign up</button>
       </div>
     )
   }

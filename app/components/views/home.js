@@ -11,10 +11,10 @@ class Home extends Component {
     const { logged } = this.props
     if (logged) {
       return (
-        <div>
+        <article>
           <ActiveRecord />
           <RecordsControl />
-        </div>
+        </article>
       )
     }
     return <Welcome />

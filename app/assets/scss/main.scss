@@ -6,16 +6,26 @@ $infoColor: #3f88c5;
 $darkInfoColor: #032b43;
 $successColor: #136f63;
 $white: white;
+$contrastWhite: rgba(238, 238, 245, 0.719);
 $black: black;
 
 body {
   color: $black;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 18px;
 }
 
 a {
   color: $white;
   text-decoration: none;
+}
+input {
+  width: 250px;
+  border: 1px $infoColor solid;
+  border-radius: 5px;
+  line-height: 2;
+  font-size: 100%;
+  padding: 0.5em;
 }
 
 h2 {
@@ -28,17 +38,6 @@ h2 {
 h3 {
   font-size: 125%;
   margin: 1em 0;
-}
-
-p {
-  margin-bottom: 0.5em;
-}
-
-.indented-content {
-  margin: 0 0 0 5em;
-  font-size: 110%;
-  text-align: justify;
-  line-height: 1.4;
 }
 
 header {
@@ -78,97 +77,70 @@ header {
   }
 }
 
-%button {
+button {
   padding: 1em;
-  border-radius: 5px;
-  font-size: 20px;
-  margin: 1em;
+  margin: 0 0.5em;
+  font-size: 120%;
   font-weight: bold;
+  color: $infoColor;
+  background-color: transparent;
+  border: $infoColor solid 2px;
+  border-radius: 5px;
 }
 
 %content-container {
   padding: 2em;
 }
 
-// RecordsControl
+.main-container {
+  margin: 1em auto;
+  display: flex;
+  flex-direction: column;
+  max-width: 1024px;
+  align-items: center;
+}
+
+article {
+  section {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    h1,
+    h2,
+    h3,
+    h4 {
+      text-align: center;
+    }
+    text-align: justify;
+  }
+  section:nth-child(2n) {
+    background-color: $contrastWhite;
+  }
+}
 
 .activity-button-grid {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
 }
+
 .activity-button {
-  @extend %button;
-  border: solid $infoColor 2px;
-  color: $infoColor;
-  background-color: transparent;
 }
 .activity-button:hover {
-  background-color: $infoColor;
-  color: $white;
+  border-color: $warningColor;
+  color: $warningColor;
 }
 
-// Active Record
-
-.active-record {
-  @extend %content-container;
-  display: flex;
-  flex-direction: column;
-  background-color: $infoColor;
-  color: $white;
-  .end-activity-button {
-    align-self: center;
-    @extend %button;
-    color: $white;
-    background-color: $darkInfoColor;
-    border: solid transparent 2px;
-  }
-  .end-activity-button:hover {
-    background-color: $successColor;
-    color: $white;
-  }
-}
-
-.record-details {
-  align-self: center;
-  font-size: 25px;
-}
-
-.no-active-record {
-  padding: 2em;
-  background-color: $warningColor;
-  color: $black;
-  text-align: center;
-}
-
-// History
-
-.history {
-  @extend %content-container;
-  height: 90vh;
-  display: flex;
-  flex-direction: column;
-  .day {
-    margin: auto;
-  }
-}
-
-// Profile
-
-.profile {
+.error {
+  background-color: #d00000;
+  color: white;
+  margin: 1em;
   padding: 1em;
-  display: flex;
-  flex-direction: column;
+  font-size: 100%;
 }
 
-// login
-
-.login {
-  display: flex;
-  padding: 1em;
-  flex-direction: column;
-}
+// Helper classes
 
 .center {
-  margin: auto;
+  text-align: center;
 }

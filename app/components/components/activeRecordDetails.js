@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import ActivityButton from './activityButton'
+
 export default class ActiveRecordDetails extends Component {
   constructor(props) {
     super(props)
@@ -40,10 +42,12 @@ export default class ActiveRecordDetails extends Component {
   }
   render() {
     return (
-      <div className="record-details">
-        <div>Since starting: {this.displayTime()}</div>
-        <br />
-        <div>Type: {this.props.type}</div>
+      <div>
+        <h2>Since starting: {this.displayTime()}</h2>
+        <h3>Type: {this.props.type}</h3>
+        <div className="center">
+          <ActivityButton className="activity-button" onClick={this.props.onEnd} type="END" />
+        </div>
       </div>
     )
   }
@@ -51,5 +55,6 @@ export default class ActiveRecordDetails extends Component {
 
 ActiveRecordDetails.propTypes = {
   start: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired
+  type: PropTypes.string.isRequired,
+  onEnd: PropTypes.func.isRequired
 }

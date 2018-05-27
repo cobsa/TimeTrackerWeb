@@ -8,6 +8,7 @@ import gql from 'graphql-tag'
 
 import LoginForm from '../components/loginForm'
 import * as userActions from '../../redux/user/index'
+import ErrorGraphQL from '../components/errorGraphQL'
 
 const LOGIN_USER = gql`
   mutation loginUser($email: String!, $password: String!) {
@@ -55,7 +56,7 @@ class Login extends Component {
                   }}
                 />
                 {loading && <p>Loading...</p>}
-                {error && <p>Email and/or password is invalid!</p>}
+                {error && <ErrorGraphQL message={error.message} />}
               </div>
             )}
           </Mutation>

@@ -25,19 +25,22 @@ export default class RecordsControl extends Component {
           return (
             <Mutation mutation={START_RECORD}>
               {startRecord => (
-                <div className="activity-button-grid">
-                  {typeList.map(enumType => {
-                    return (
-                      <ActivityButton
-                        type={enumType.name}
-                        key={enumType.name}
-                        onClick={type => {
-                          startRecord({ variables: { type, start: new Date().toISOString() } })
-                        }}
-                      />
-                    )
-                  })}
-                </div>
+                <section>
+                  <h2>Choose activity</h2>
+                  <div className="activity-button-grid">
+                    {typeList.map(enumType => {
+                      return (
+                        <ActivityButton
+                          type={enumType.name}
+                          key={enumType.name}
+                          onClick={type => {
+                            startRecord({ variables: { type, start: new Date().toISOString() } })
+                          }}
+                        />
+                      )
+                    })}
+                  </div>
+                </section>
               )}
             </Mutation>
           )
