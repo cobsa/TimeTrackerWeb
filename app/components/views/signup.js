@@ -38,6 +38,7 @@ class Signup extends Component {
   }
 
   handleSignup(name, email, password, passwordAgain) {
+    // Signup user and then log in
     this.props
       .SIGNUP_USER({
         variables: {
@@ -48,21 +49,15 @@ class Signup extends Component {
         }
       })
       .then(() => {
-        this.props
-          .LOGIN_USER({
-            variables: {
-              email,
-              password
-            }
-          })
-          .then(loginResponse => {
-            this.handleLogin(loginResponse.data)
-          })
-          .catch(e => {
-            this.setState({
-              error: e.message
-            })
-          })
+        return this.props.LOGIN_USER({
+          variables: {
+            email,
+            password
+          }
+        })
+      })
+      .then(loginResponse => {
+        this.handleLogin(loginResponse.data)
       })
       .catch(e => {
         this.setState({

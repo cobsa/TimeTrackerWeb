@@ -17,7 +17,7 @@ export default class BasePie extends Component {
       })
     })
 
-    // Filter to only record from today
+    // Filter to only record from specific day
     records.forEach(record => {
       if (record.done && day.isSame(record.end, 'day')) {
         let duration = 0
@@ -33,13 +33,14 @@ export default class BasePie extends Component {
         })
       }
     })
+
     // Check that there is some data to show
     let totalDuration = 0
     array.forEach(element => {
       totalDuration += element.value
     })
     if (totalDuration === 0) {
-      return <div>No data for today!</div>
+      return <div>No data</div>
     }
     return (
       <Pie
@@ -54,9 +55,15 @@ export default class BasePie extends Component {
         data={array}
         innerRadius={0.6}
         colors="paired"
-        padAngle={1}
+        padAngle={0.5}
         cornerRadius={5}
-        sliceLabel={e => `${e.value} min(s)`}
+        sliceLabel={e => {
+          const { value } = e
+          if (value > 60) {
+            return `${Math.floor(value / 60)} hr ${value % 60} min`
+          }
+          return `${value} min`
+        }}
         slicesLabelsSkipAngle={5}
         radialLabelsSkipAngle={5}
         radialLabelsLinkDiagonalLength={10}

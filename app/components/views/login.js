@@ -9,6 +9,7 @@ import gql from 'graphql-tag'
 import LoginForm from '../components/loginForm'
 import * as userActions from '../../redux/user/index'
 import ErrorGraphQL from '../components/errorGraphQL'
+import Loading from '../components/loading'
 
 const LOGIN_USER = gql`
   mutation loginUser($email: String!, $password: String!) {
@@ -39,28 +40,26 @@ class Login extends Component {
       return <Redirect to="/" />
     }
     return (
-      <div className="login">
-        <div className="center">
-          <h2>Login</h2>
-          <Mutation mutation={LOGIN_USER} onCompleted={this.handleResponse}>
-            {(loginUser, { loading, error }) => (
-              <div>
-                <LoginForm
-                  handleSubmit={(email, password) => {
-                    loginUser({
-                      variables: {
-                        email,
-                        password
-                      }
-                    })
-                  }}
-                />
-                {loading && <p>Loading...</p>}
-                {error && <ErrorGraphQL message={error.message} />}
-              </div>
-            )}
-          </Mutation>
-        </div>
+      <div className="center">
+        <h2>Login</h2>
+        <Mutation mutation={LOGIN_USER} onCompleted={this.handleResponse}>
+          {(loginUser, { loading, error }) => (
+            <div>
+              <LoginForm
+                handleSubmit={(email, password) => {
+                  loginUser({
+                    variables: {
+                      email,
+                      password
+                    }
+                  })
+                }}
+              />
+              {loading && <Loading />}
+              {error && <ErrorGraphQL message={error.message} />}
+            </div>
+          )}
+        </Mutation>
       </div>
     )
   }

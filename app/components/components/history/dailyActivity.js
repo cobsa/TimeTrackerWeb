@@ -5,20 +5,39 @@ import PropTypes from 'prop-types'
 import BasePie from './basePie'
 
 export default class DailyActivity extends Component {
+  constructor() {
+    super()
+    this.state = {
+      day: moment(),
+      header: 'Today'
+    }
+  }
   // Show
   render() {
     const { types, records } = this.props
     return (
-      <div className="history">
-        <div className="day">
-          <h2>Your activity today</h2>
-          <BasePie records={records} types={types} day={moment()} />
-        </div>
-        <div className="day">
-          <h2>Your activity yesterday</h2>
-          <BasePie records={records} types={types} day={moment().subtract(1, 'days')} />
-        </div>
-      </div>
+      <article>
+        <section className="center">
+          <div>
+            <button
+              onClick={() => {
+                this.setState({ day: moment(), header: 'Today' })
+              }}
+            >
+              Today
+            </button>
+            <button
+              onClick={() => {
+                this.setState({ day: moment().subtract(1, 'days'), header: 'Yesterday' })
+              }}
+            >
+              Yesterday
+            </button>
+          </div>
+          <h2>{this.state.header}</h2>
+          <BasePie records={records} types={types} day={this.state.day} />
+        </section>
+      </article>
     )
   }
 }

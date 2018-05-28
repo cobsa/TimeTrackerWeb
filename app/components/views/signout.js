@@ -24,14 +24,12 @@ class SignOut extends Component {
       return <div>Logging out</div>
     }
     return (
-      <div>
-        <ApolloConsumer>
-          {client => {
-            client.resetStore()
-            return <Redirect to="/" />
-          }}
-        </ApolloConsumer>
-      </div>
+      <ApolloConsumer>
+        {client => {
+          client.resetStore()
+          return <Redirect to="/" />
+        }}
+      </ApolloConsumer>
     )
   }
 }

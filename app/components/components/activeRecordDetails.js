@@ -6,21 +6,27 @@ import ActivityButton from './activityButton'
 export default class ActiveRecordDetails extends Component {
   constructor(props) {
     super(props)
-    const startDate = new Date(props.start)
+    this.startDate = new Date(this.props.start)
     this.state = {
-      startTime: startDate,
-      timeElapsed: this.timeSince(startDate)
+      timeElapsed: this.timeSince(this.startDate)
     }
     this.displayTime = this.displayTime.bind(this)
     this.timeSince = this.timeSince.bind(this)
     this.timer = undefined
   }
+
   componentDidMount() {
     this.timer = setInterval(() => {
       this.setState({
-        timeElapsed: this.timeSince(this.state.startTime)
+        timeElapsed: this.timeSince(this.startDate)
       })
     }, 1000)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.start !== nextProps.start) {
+      this.startDate = new Date(nextProps.start)
+    }
   }
 
   componentWillUnmount() {
@@ -40,6 +46,7 @@ export default class ActiveRecordDetails extends Component {
     return hours.slice(-2) + ':' + minutes.slice(-2) + ':' + seconds.slice(-2)
     /* eslint-enable prefer-template */
   }
+  
   render() {
     return (
       <div>

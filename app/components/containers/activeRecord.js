@@ -4,6 +4,8 @@ import gql from 'graphql-tag'
 
 import ActiveRecordDetails from '../components/activeRecordDetails'
 import NoActiveRecord from '../components/noActiveRecord'
+import Loading from '../components/loading'
+import ErrorGraphQL from '../components/errorGraphQL'
 
 const ACTIVE_RECORD = gql`
   {
@@ -29,10 +31,10 @@ const END_RECORD = gql`
 export default class ActiveRecord extends Component {
   render() {
     return (
-      <Query query={ACTIVE_RECORD} pollInterval={250}>
+      <Query query={ACTIVE_RECORD} pollInterval={500}>
         {({ loading, error, data }) => {
-          if (loading) return 'Loading'
-          if (error) return 'ERRR'
+          if (loading) return <Loading />
+          if (error) return <ErrorGraphQL message={error.message} />
           const { activeRecord } = data.user
           if (!activeRecord) return <NoActiveRecord />
           return (

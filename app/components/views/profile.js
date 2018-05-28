@@ -4,6 +4,7 @@ import gql from 'graphql-tag'
 
 import UserDetails from '../components/userDetails'
 import ErrorGraphQL from '../components/errorGraphQL'
+import Loading from '../components/loading'
 
 const GET_USER = gql`
   {
@@ -19,7 +20,7 @@ export default class Profile extends Component {
     return (
       <Query query={GET_USER}>
         {({ loading, error, data }) => {
-          if (loading) return null
+          if (loading) return <Loading />
           if (error) return <ErrorGraphQL message={error.message} />
           const { user } = data
           return <UserDetails {...user} />

@@ -97,7 +97,6 @@ button {
   display: flex;
   flex-direction: column;
   max-width: 1024px;
-  align-items: center;
 }
 
 article {
@@ -124,8 +123,6 @@ article {
   justify-content: space-evenly;
 }
 
-.activity-button {
-}
 .activity-button:hover {
   border-color: $warningColor;
   color: $warningColor;
@@ -139,8 +136,15 @@ article {
   font-size: 100%;
 }
 
+.loading {
+  display: flex;
+  justify-content: center;
+  padding: 2em;
+}
+
 // Helper classes
 
 .center {
   text-align: center;
 }
+

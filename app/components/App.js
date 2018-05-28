@@ -47,23 +47,21 @@ const App = () => {
   return (
     <ApolloProvider client={client}>
       <Provider store={store}>
-        <div>
-          <ConnectedRouter history={history}>
-            <div>
-              <HeaderContainer />
-              <div className="main-container">
-                <Switch>
-                  <Route exact path="/" component={Home} />
-                  <Route path="/history" component={History} />
-                  <Route path="/profile" component={Profile} />
-                  <Route path="/login" component={Login} />
-                  <Route path="/signup" component={Signup} />
-                  <Route path="/signout" component={SignOut} />
-                </Switch>
-              </div>
+        <ConnectedRouter history={history}>
+          <div>
+            <HeaderContainer />
+            <div className="main-container">
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/history" component={History} />
+                <Route path="/profile" component={Profile} />
+                <Route path="/login" component={Login} />
+                <Route path="/signup" component={Signup} />
+                <Route path="/signout" component={SignOut} />
+              </Switch>
             </div>
-          </ConnectedRouter>
-        </div>
+          </div>
+        </ConnectedRouter>
       </Provider>
     </ApolloProvider>
   )

@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import GET_TYPES from '../../graphql/getTypes'
 import DailyActivity from '../components/history/dailyActivity'
 import ErrorGraphQL from '../components/errorGraphQL'
+import Loading from '../components/loading'
 
 const query = gql`
   {
@@ -27,13 +28,9 @@ class History extends Component {
     if (!recordsData.loading && !recordTypesData.loading) {
       const types = recordTypesData.__type.enumValues
       const { records } = recordsData
-      return (
-        <div className="history">
-          <DailyActivity records={records} types={types} />
-        </div>
-      )
+      return <DailyActivity records={records} types={types} />
     }
-    return 'Loading'
+    return <Loading />
   }
 }
 
