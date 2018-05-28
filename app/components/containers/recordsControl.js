@@ -38,11 +38,11 @@ const GET_ACTIVE = gql`
 class RecordsControl extends Component {
   render() {
     const { types, active } = this.props
-    if (types.error || active.error) {
-      return <ErrorGraphQL message={types.error.message || active.error.message} />
-    }
     if (types.loading || active.loading) {
       return <Loading />
+    }
+    if (types.error || active.error) {
+      return <ErrorGraphQL message={types.error.message || active.error.message} />
     }
     const typeList = types.__type.enumValues
     const { activeRecord } = active.user // eslint-disable-line

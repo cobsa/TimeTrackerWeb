@@ -22,15 +22,15 @@ const query = gql`
 class History extends Component {
   render() {
     const { recordsData, recordTypesData } = this.props
+    if (recordsData.loading || recordTypesData.loading) {
+      return <Loading />
+    }
     if (recordsData.error || recordTypesData.error) {
       return <ErrorGraphQL message={recordsData.error.message || recordTypesData.error.message} />
     }
-    if (!recordsData.loading && !recordTypesData.loading) {
-      const types = recordTypesData.__type.enumValues
-      const { records } = recordsData
-      return <DailyActivity records={records} types={types} />
-    }
-    return <Loading />
+    const types = recordTypesData.__type.enumValues
+    const { records } = recordsData
+    return <DailyActivity records={records} types={types} />
   }
 }
 
