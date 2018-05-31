@@ -5,60 +5,46 @@ export default class Welcome extends Component {
     return (
       <article>
         <section>
-          <h2>Home</h2>
+          <h2>TimeTracker</h2>
           <p>
-            Qui voluptate dolor irure ullamco ad amet consectetur aliqua deserunt dolor. Sint dolor
-            eiusmod sunt eiusmod consequat dolor esse sint non tempor tempor. Ullamco Lorem ullamco
-            velit labore consectetur tempor labore proident.
+            Simple time tracker, track your activity over a day to see how much time you spent. The
+            site is build for my portfolio and for personal use.
           </p>
         </section>
         <section>
-          <h3>Details</h3>
-          <div className="indented-content">
-            <p>
-              Nulla anim id ullamco eiusmod consectetur consectetur eu cillum quis non aute
-              consequat do Lorem. Consequat irure aliqua culpa minim velit tempor reprehenderit
-              ullamco sint. Amet deserunt incididunt est velit aliquip nulla proident quis non esse
-              adipisicing consequat.
-            </p>
-            <p>
-              Est adipisicing officia fugiat duis commodo ex elit ullamco. Ipsum pariatur sit quis
-              velit aute nostrud dolore culpa ipsum eiusmod adipisicing qui excepteur fugiat.
-              Nostrud veniam sint occaecat Lorem mollit deserunt enim dolore irure.
-            </p>
-          </div>
+          <h2>The Code</h2>
+          <p>
+            The site is built using ReactJS, GraphQL, Redux, Express, Apollo, Apollo-server, Babel
+            and Webpack. Front-end and back-end are coded in ES6 and transpiled to native JS with
+            Babel. Eslint and Prettier are used for consistent and bug free(ish) code.
+          </p>
         </section>
         <section>
-          <h3>Details</h3>
-          <div className="indented-content">
-            <p>
-              Nulla anim id ullamco eiusmod consectetur consectetur eu cillum quis non aute
-              consequat do Lorem. Consequat irure aliqua culpa minim velit tempor reprehenderit
-              ullamco sint. Amet deserunt incididunt est velit aliquip nulla proident quis non esse
-              adipisicing consequat.
-            </p>
-            <p>
-              Est adipisicing officia fugiat duis commodo ex elit ullamco. Ipsum pariatur sit quis
-              velit aute nostrud dolore culpa ipsum eiusmod adipisicing qui excepteur fugiat.
-              Nostrud veniam sint occaecat Lorem mollit deserunt enim dolore irure.
-            </p>
-          </div>
+          <h2>The Front</h2>
+          <p>
+            The Front is made with ReactJS, Apollo-client(GraphQL queries), Redux(UI state) and some
+            other external libraries for charts etc. Proptypes are used in each React component to
+            make debugging a breeze. JWTs are used to store user session in local storage, which is
+            easy, but not that secure way of storing session.
+          </p>
         </section>
         <section>
-          <h3>Details</h3>
-          <div className="indented-content">
-            <p>
-              Nulla anim id ullamco eiusmod consectetur consectetur eu cillum quis non aute
-              consequat do Lorem. Consequat irure aliqua culpa minim velit tempor reprehenderit
-              ullamco sint. Amet deserunt incididunt est velit aliquip nulla proident quis non esse
-              adipisicing consequat.
-            </p>
-            <p>
-              Est adipisicing officia fugiat duis commodo ex elit ullamco. Ipsum pariatur sit quis
-              velit aute nostrud dolore culpa ipsum eiusmod adipisicing qui excepteur fugiat.
-              Nostrud veniam sint occaecat Lorem mollit deserunt enim dolore irure.
-            </p>
-          </div>
+          <h2>The Back</h2>
+          <p>
+            The back-end is built on top of express server and provides GraphQL interface to user
+            information. Apollo-server is used for reduce boilerplate in GraphQL schemas and
+            resolvers. Integration tests are used to make sure server is bug free(ish).
+            Authentication is implemented with email&password pair and hashed with Bcrypt.
+            Authorization and session data is implemented with JWTs and JWT data is send in request
+            header. The data is stored in Mongodb with help of MongooseJS.
+          </p>
+        </section>
+        <section>
+          <h2>Hosting</h2>
+          <p>
+            The site is hosted in AWS EC2 instance, which was configured to use Nginx, Express and
+            Mongodb. Setup is very basic, but should offer lightweight and robust back-end.
+          </p>
         </section>
       </article>
     )

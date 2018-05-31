@@ -46,7 +46,7 @@ export default class ActiveRecordDetails extends Component {
     return hours.slice(-2) + ':' + minutes.slice(-2) + ':' + seconds.slice(-2)
     /* eslint-enable prefer-template */
   }
-  
+
   render() {
     return (
       <div>

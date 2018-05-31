@@ -17,7 +17,10 @@ const initialState = {
   }
 }
 const history = createHistory()
-const middlewares = [logger, routerMiddleware(history)]
+const middlewares = [routerMiddleware(history)]
+if (process.env.NODE_ENV !== 'production') {
+  middlewares.push(logger)
+}
 const store = createStore(rootReducer, initialState, applyMiddleware(...middlewares))
 
 export { store, history }

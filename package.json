@@ -7,13 +7,13 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server",
     "dev:external": "cross-env NODE_ENV=development webpack-dev-server --host 0.0.0.0",
     "clean": "rimraf dist",
-    "production": "cross-env npm run clean && webpack --config webpack.production.config.js --progress --profile --colors",
+    "build": "cross-env npm run clean && webpack --config webpack.production.config.js --progress --profile --colors",
     "lint": "eslint ./app/**/**.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "coverage": "jest --coverage"
   },
-  "author": "Jaakko Koponen <cobsa89@gmail.com",
+  "author": "Jaakko Koponen <cobsa89@gmail.com>",
   "license": "MIT",
   "jest": {
     "setupFiles": [
