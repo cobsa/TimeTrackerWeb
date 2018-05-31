@@ -20,7 +20,7 @@ a {
   text-decoration: none;
 }
 input {
-  width: 250px;
+  width: 80vw;
   border: 1px $infoColor solid;
   border-radius: 5px;
   line-height: 2;
@@ -79,13 +79,14 @@ header {
 
 button {
   padding: 1em;
-  margin: 0 0.5em;
+  margin: 0.5em;
   font-size: 120%;
   font-weight: bold;
   color: $infoColor;
   background-color: transparent;
   border: $infoColor solid 2px;
   border-radius: 5px;
+  width: 50vw;
 }
 
 %content-container {
@@ -119,8 +120,9 @@ article {
 
 .activity-button-grid {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-evenly;
+  align-items: center;
 }
 
 .activity-button:hover {
@@ -148,3 +150,15 @@ article {
   text-align: center;
 }
 
+@media(min-width: 720px) {
+  .activity-button-grid {
+    flex-direction: row;
+  }
+  button {
+    width: 25vw;
+  }
+  input {
+    width: 50vw;
+  }
+
+}

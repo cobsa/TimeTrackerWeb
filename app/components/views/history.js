@@ -26,7 +26,7 @@ class History extends Component {
       return <Loading />
     }
     if (recordsData.error || recordTypesData.error) {
-      return <ErrorGraphQL message={recordsData.error.message || recordTypesData.error.message} />
+      return <ErrorGraphQL message={(recordsData.error || recordTypesData.error).message} />
     }
     const types = recordTypesData.__type.enumValues
     const { records } = recordsData

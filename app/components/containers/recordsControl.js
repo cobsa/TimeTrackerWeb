@@ -42,10 +42,10 @@ class RecordsControl extends Component {
       return <Loading />
     }
     if (types.error || active.error) {
-      return <ErrorGraphQL message={types.error.message || active.error.message} />
+      return <ErrorGraphQL message={(types.error || active.error).message} />
     }
     const typeList = types.__type.enumValues
-    const { activeRecord } = active.user // eslint-disable-line
+    const { activeRecord } = active.user
     return (
       <section>
         <h2>{activeRecord ? 'Change activity' : 'Choose activity'}</h2>
